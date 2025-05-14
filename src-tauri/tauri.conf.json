@@ -1,0 +1,78 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "cura",
+  "version": "0.1.0",
+  "identifier": "com.shingchunglee.cura",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "cura",
+        "resizable": false,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "devtools": true,
+        "transparent": true
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self' asset: http://asset.localhost ipc:",
+        "connect-src": "'self' ipc:",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' asset: http://asset.localhost"
+      },
+      "assetProtocol": {
+        "enable": true,
+        "scope": {
+          "allow": ["/**", "**", "**/*"]
+        }
+      }
+    },
+    "macOSPrivateApi": true
+  },
+  "plugins": {
+    "cli": {
+      "description": "Customizable utility for rapid access",
+      "args": [
+        {
+          "name": "config",
+          "short": "c",
+          "takesValue": true,
+          "description": "Specify theme to use"
+        },
+        {
+          "name": "layout",
+          "short": "l",
+          "takesValue": true,
+          "description": "Specify layout to use"
+        },
+        {
+          "name": "delimiter",
+          "short": "d",
+          "takesValue": true,
+          "description": "Specify the delimiter"
+        }
+      ]
+    },
+    "fs": {
+      "requireLiteralLeadingDot": false
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-center",
+    "opener:default",
+    "global-shortcut:allow-is-registered",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister",
+    "fs:read-all",
+    "macos-permissions:default",
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        { "path": "$HOME/.config/**" },
+        { "path": "$CONFIG/**" },
+        { "path": "/**" }
+      ]
+    }
+  ]
+}
