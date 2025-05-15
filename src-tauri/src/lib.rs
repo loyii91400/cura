@@ -1,4 +1,4 @@
-use std::sync::Mutex;
+use std::{path::PathBuf, sync::Mutex};
 use tauri::{Builder, Manager, State};
 use tauri_plugin_cli::CliExt;
 use window_vibrancy::apply_vibrancy;
@@ -21,7 +21,7 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
         .expect("Failed to setup global shortcut plugin");
 
-    let all_path = app.path().home_dir()?.join("cura");
+    let all_path = PathBuf::from("/");
     app.asset_protocol_scope()
         .allow_directory(&all_path, true)
         .unwrap();

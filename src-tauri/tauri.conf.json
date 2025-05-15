@@ -21,15 +21,11 @@
       }
     ],
     "security": {
-      "csp": {
-        "default-src": "'self' asset: http://asset.localhost ipc:",
-        "connect-src": "'self' ipc:",
-        "style-src": "'self' 'unsafe-inline'",
-        "img-src": "'self' asset: http://asset.localhost"
-      },
+      "csp": null,
       "assetProtocol": {
         "enable": true,
         "scope": {
+          "requireLiteralLeadingDot": false,
           "allow": ["/**", "**", "**/*"]
         }
       }

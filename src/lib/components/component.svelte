@@ -5,6 +5,8 @@
   import Container from "$lib/components/container.svelte";
   import Text from "$lib/components/text.svelte";
   import Image from "$lib/components/image.svelte";
+  import File from "$lib/components/file.svelte";
+  import ObjectComponent from "$lib/components/object.svelte";
   import { appState } from "$lib/appState.svelte";
 
   /**
@@ -16,6 +18,8 @@
     input: Input,
     text: Text,
     image: Image,
+    file: File,
+    object: ObjectComponent,
   };
 
   let { selected = false, scrollOnSelected = false, layout, data } = $props();
