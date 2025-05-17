@@ -2,7 +2,6 @@
   import { appState } from "$lib/appState.svelte";
   import { convertFileSrc } from "@tauri-apps/api/core";
   import { onMount } from "svelte";
-  import imageType from "image-type";
 
   let { style, data } = $props();
 
