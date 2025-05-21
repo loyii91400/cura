@@ -37,10 +37,16 @@
       "description": "Customizable utility for rapid access",
       "args": [
         {
+          "name": "help",
+          "short": "h",
+          "takesValue": false,
+          "description": "Help"
+        },
+        {
           "name": "config",
           "short": "c",
           "takesValue": true,
-          "description": "Specify theme to use"
+          "description": "Specify config to use"
         },
         {
           "name": "layout",

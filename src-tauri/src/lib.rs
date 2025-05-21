@@ -26,6 +26,8 @@ fn setup(app: &mut tauri::App) -> Result<(), Box<dyn std::error::Error>> {
         .allow_directory(&all_path, true)
         .unwrap();
 
+    get_cli_help(app);
+
     let mut app_state = AppState {
         config_path: "".to_string(),
         config: config::CuraConfig::default(),
@@ -84,10 +86,24 @@ fn get_std_in() -> Vec<String> {
             Err(err) => eprintln!("IO error: {}", err),
         }
     }
-
     stdin_content
 }
 
+fn get_cli_help(app: &mut tauri::App) {
+    match app.cli().matches() {
+        Ok(matches) => {
+            if matches
+                .args
+                .get("help")
+                .map_or(false, |arg| arg.occurrences > 0)
+            {
+                print_help();
+                std::process::exit(0);
+            }
+        }
+        Err(_) => {}
+    }
+}
 fn get_cli_input(app: &mut tauri::App, app_state: &mut AppState) {
     match app.cli().matches() {
         // `matches` here is a Struct with { args, subcommand }.
@@ -109,6 +125,24 @@ fn get_cli_input(app: &mut tauri::App, app_state: &mut AppState) {
         }
         Err(_) => {}
     }
+}
+
+fn print_help() {
+    eprintln!("usage: cura [-h] [-c CONFIG_PATH] [-l LAYOUT_PATH] [-d DELIMITER] [INPUT]");
+    eprintln!();
+    eprintln!("Customizable utility for rapid access and GUI-based selection.");
+    eprintln!();
+    eprintln!("positional arguments:");
+    eprintln!("  INPUT                 Input data for GUI selection, provided via stdin [default: none, expects piped input]");
+    eprintln!();
+    eprintln!("optional arguments:");
+    eprintln!("  -h, --help            Show this help message");
+    eprintln!("  -c CONFIG_PATH, --config CONFIG_PATH");
+    eprintln!("                        Specify the path to the theme configuration file (e.g., \"/path/to/theme.conf\") [default: none]");
+    eprintln!("  -l LAYOUT_PATH, --layout LAYOUT_PATH");
+    eprintln!("                        Specify the path to the layout configuration file (e.g., \"/path/to/layout.conf\") [default: none]");
+    eprintln!("  -d DELIMITER, --delimiter DELIMITER");
+    eprintln!("                        Specify the delimiter for parsing stdin input (e.g., \",\", \";\", \"\\t\") [default: none, input treated as a single item]");
 }
 
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
