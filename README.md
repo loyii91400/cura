@@ -52,6 +52,7 @@ Customizable utility for rapid access, a quick MacOS utility to integrate shell 
 - [x] Fuzzy-search.
 - [x] Sends results to stdout.
 - [ ] Add configuration to output section of data (delimited)
+- [ ] Fuzzy search content of files instead of filename
 
 ## Installation
 
