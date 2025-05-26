@@ -11,7 +11,7 @@ Customizable utility for rapid access, a quick MacOS utility to integrate shell 
 
 <!--toc:start-->
 - [CURA](#cura)
-  - [Features](#features)
+  - [Features (also my todo list)](#features-also-my-todo-list)
   - [Installation](#installation)
     - [Clone this repository](#clone-this-repository)
     - [Build the project](#build-the-project)
