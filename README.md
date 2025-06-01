@@ -21,6 +21,7 @@ Customizable utility for rapid access, a quick MacOS utility to integrate shell 
     - [Config and Layouts](#config-and-layouts)
     - [Examples](#examples)
       - [App launcher](#app-launcher)
+      - [Wallpaper](#wallpaper)
   - [Configurations](#configurations)
     - [Config](#config)
       - [Default config](#default-config)
@@ -117,7 +118,7 @@ ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applica
 
 #### Wallpaper
 
-see `examples` folder for the config and layout
+See `examples` folder for the config and layout
 
 ```bash
 find ~/Pictures/wallpapers -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" -o -iname "*.tiff" \) -exec realpath {} \; |
@@ -127,7 +128,7 @@ find ~/Pictures/wallpapers -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -inam
   xargs -I {} osascript -e 'tell application "System Events" to tell every desktop to set picture to "{}"'
 ```
 
-![Wallpaper Demo Video](examples/wallpaper/demo.mov)
+![Wallpaper Demo Video](examples/wallpaper/demo.mp4)
 
 ## Configurations
 
