@@ -128,7 +128,7 @@ find ~/Pictures/wallpapers -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -inam
   xargs -I {} osascript -e 'tell application "System Events" to tell every desktop to set picture to "{}"'
 ```
 
-![Wallpaper Demo Video](examples/wallpaper/demo.mp4)
+![Wallpaper Demo](examples/wallpaper/demo.gif)
 
 ## Configurations
 
