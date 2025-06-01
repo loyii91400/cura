@@ -107,13 +107,27 @@ See sections [Config](#config) and [Layout](#layout) for the values and defaults
 
 #### App launcher
 
-```
+```bash
 ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ | \
     grep '\.app$' | \
     sed 's/\.app$//g' | \
     cura  | \
     xargs -I {} open -a "{}.app"
 ```
+
+#### Wallpaper
+
+see `examples` folder for the config and layout
+
+```bash
+find ~/Pictures/wallpapers -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" -o -iname "*.tiff" \) -exec realpath {} \; |
+  awk '{split($0, a, "/"); fname=a[length(a)]; sub(/.[^.]*$/, "", fname); print $0 ", " fname}' |
+  /Applications/cura.app/Contents/MacOS/cura -c ~/.config/cura/wallpaper.toml -l ~/.config/cura/layout/wallpaper.json -d , |
+  awk -F',' '{print $1}' |
+  xargs -I {} osascript -e 'tell application "System Events" to tell every desktop to set picture to "{}"'
+```
+
+![Wallpaper Demo Video](examples/wallpaper/demo.mov)
 
 ## Configurations
 

@@ -1,0 +1,10 @@
+version = "0.0.1"
+exit_on_esc = true
+fuzzy_threshold = 0.01
+width = 1080
+height = 800
+
+[keymaps]
+"Ctrl+Q" = "exit"
+"/" = "search"
+"tab" = "cycle_next"
